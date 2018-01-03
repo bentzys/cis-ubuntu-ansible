@@ -7,6 +7,7 @@
     check_mode: no
     failed_when: awk_empty_shadow.stdout != '' and lock_shadow_accounts == False
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.01
@@ -17,6 +18,7 @@
     failed_when: plus_pass.rc == 0
     changed_when: plus_pass.rc == 0
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.02
@@ -27,6 +29,7 @@
     failed_when: plus_shadow.rc == 0
     changed_when: plus_shadow.rc == 0
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.03
@@ -37,6 +40,7 @@
     failed_when: plus_group.rc == 0
     changed_when: plus_group.rc == 0
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.04
@@ -47,6 +51,7 @@
     changed_when: False
     failed_when: uid_zero_root.stdout != 'root'
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.05
@@ -58,6 +63,7 @@
       group: root
       mode: 0700
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.06
@@ -66,6 +72,7 @@
     shell: /opt/6.2.6.sh
     register: root_path_integrity
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.06
@@ -78,6 +85,7 @@
       group: root
       state: absent
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.06
@@ -89,6 +97,7 @@
       group: root
       mode: 0700
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.07
@@ -97,6 +106,7 @@
     shell: /opt/6.2.7.sh
     register: home_directories_exist
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.07
@@ -109,6 +119,7 @@
       group: root
       state: absent
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.07
@@ -120,6 +131,7 @@
       group: root
       mode: 0700
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.08
@@ -129,6 +141,7 @@
     register: home_directories_permissions
     when: modify_user_homes == True
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.08
@@ -141,6 +154,7 @@
       group: root
       state: absent
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.08
@@ -152,6 +166,7 @@
       group: root
       mode: 0700
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.09
@@ -160,6 +175,7 @@
     shell: /opt/6.2.9.sh
     register: home_directories_own
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.09
@@ -172,6 +188,7 @@
       group: root
       state: absent
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.09
@@ -183,6 +200,7 @@
       group: root
       mode: 0700
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.10
@@ -191,6 +209,7 @@
     shell: /opt/6.2.10.sh
     register: user_dot_files
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.10
@@ -203,6 +222,7 @@
       group: root
       state: absent
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.10
@@ -214,6 +234,7 @@
       group: root
       mode: 0700
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.11
@@ -222,6 +243,7 @@
     shell: /opt/6.2.11.sh
     register: user_forward_files
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.11
@@ -234,6 +256,7 @@
       group: root
       state: absent
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.11
@@ -245,6 +268,7 @@
       group: root
       mode: 0700
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.12
@@ -253,6 +277,7 @@
     shell: /opt/6.2.12.sh
     register: user_netrc_files
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.12
@@ -265,6 +290,7 @@
       group: root
       state: absent
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.12
@@ -276,6 +302,7 @@
       group: root
       mode: 0700
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.13
@@ -284,6 +311,7 @@
     shell: /opt/6.2.13.sh
     register: user_netrc_files_permissions
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.13
@@ -296,6 +324,7 @@
       group: root
       state: absent
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.13
@@ -307,6 +336,7 @@
       group: root
       mode: 0700
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.14
@@ -315,6 +345,7 @@
     shell: /opt/6.2.14.sh
     register: user_rhosts_files
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.14
@@ -327,6 +358,7 @@
       group: root
       state: absent
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.14
@@ -338,6 +370,7 @@
       group: root
       mode: 0700
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.15
@@ -346,6 +379,7 @@
     shell: /opt/6.2.15.sh
     register: check_groups_in_passwd
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.15
@@ -358,6 +392,7 @@
       group: root
       state: absent
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.15
@@ -369,6 +404,7 @@
       group: root
       mode: 0700
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.16
@@ -377,6 +413,7 @@
     shell: /opt/6.2.16.sh
     register: duplicate_uids
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.16
@@ -389,6 +426,7 @@
       group: root
       state: absent
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.16
@@ -400,6 +438,7 @@
       group: root
       mode: 0700
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.17
@@ -408,6 +447,7 @@
     shell: /opt/6.2.17.sh
     register: duplicate_gids
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.17
@@ -420,6 +460,7 @@
       group: root
       state: absent
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.17
@@ -431,6 +472,7 @@
       group: root
       mode: 0700
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.18
@@ -439,6 +481,7 @@
     shell: /opt/6.2.18.sh
     register: duplicate_users
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.18
@@ -451,6 +494,7 @@
       group: root
       state: absent
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.18
@@ -462,6 +506,7 @@
       group: root
       mode: 0700
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.19
@@ -470,6 +515,7 @@
     shell: /opt/6.2.19.sh
     register: duplicate_groups
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.19
@@ -482,6 +528,7 @@
       group: root
       state: absent
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.19
@@ -491,6 +538,7 @@
     register: shadow_group_empty
     failed_when: shadow_group_empty.stdout != ''
     tags:
+      - level1
       - section06
       - section06.02
       - section06.02.020

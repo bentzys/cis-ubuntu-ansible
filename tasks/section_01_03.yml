@@ -7,6 +7,7 @@
     register: aide_installed
     when: use_aide == True
     tags:
+      - level1
       - section01
       - section01.03
       - section01.03.01
@@ -19,6 +20,7 @@
       job: "/usr/sbin/aide --check"
     when: use_aide == True
     tags:
+      - level1
       - section01
       - section01.03
       - section01.03.02

@@ -7,6 +7,7 @@
       state: present
       create: True
     tags:
+      - level1
       - section03
       - section03.05
       - section03.05.01
@@ -18,6 +19,7 @@
       state: present
       create: True
     tags:
+      - level1
       - section03
       - section03.05
       - section03.05.02
@@ -29,6 +31,7 @@
       state: present
       create: True
     tags:
+      - level1
       - section03
       - section03.05
       - section03.05.03
@@ -40,6 +43,7 @@
       state: present
       create: True
     tags:
+      - level1
       - section03
       - section03.05
       - section03.05.04

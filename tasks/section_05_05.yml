@@ -8,5 +8,6 @@
     debug: msg='*** Check /etc/securetty for console allowed for root access ***'
     when: securetty_file.stat.exists == True
     tags:
+      - level1
       - section05
       - section05.05

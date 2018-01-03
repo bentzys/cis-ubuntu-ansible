@@ -5,6 +5,7 @@
     failed_when: False
     changed_when: False
     tags:
+      - level1
       - section01
       - section01.05
       - section01.05.01
@@ -17,6 +18,7 @@
       insertbefore: '^# End of file'
     when: hard_core.rc != 0
     tags:
+      - level1
       - section01
       - section01.05
       - section01.05.01
@@ -28,6 +30,7 @@
       state: present
     when: restrict_core_dumps == True
     tags:
+      - level1
       - section01
       - section01.05
       - section01.05.01
@@ -39,6 +42,7 @@
     changed_when: False
     ignore_errors: True
     tags:
+      - level1
       - section01
       - section01.05
       - section01.05.02
@@ -50,6 +54,7 @@
       state: present
     when: enable_aslr == True
     tags:
+      - level1
       - section01
       - section01.05
       - section01.05.03
@@ -59,6 +64,7 @@
       name: prelink
       state: absent
     tags:
+      - level1
       - section01
       - section01.05
       - section01.05.04

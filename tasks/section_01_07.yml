@@ -7,6 +7,7 @@
       line: 'Authorized uses only. All activity may be monitored and reported.'
       state: present
     tags:
+      - level1
       - section01
       - section01.07
       - section01.07.01.01
@@ -17,6 +18,7 @@
     failed_when: egrep_os_infos.rc == 0
     changed_when: False
     tags:
+      - level1
       - section01
       - section01.07
       - section01.07.01.02
@@ -27,6 +29,7 @@
     failed_when: egrep_os_infos.rc == 0
     changed_when: False
     tags:
+      - level1
       - section01
       - section01.07
       - section01.07.01.03
@@ -38,6 +41,7 @@
       group: root 
       mode: 0644
     tags:
+      - level1
       - section01
       - section01.07
       - section01.07.01.04
@@ -49,6 +53,7 @@
       group: root 
       mode: 0644
     tags:
+      - level1
       - section01
       - section01.07
       - section01.07.01.05
@@ -60,6 +65,7 @@
       group: root
       mode: 0644
     tags:
+      - level1
       - section01
       - section01.07
       - section01.07.01.07
@@ -69,6 +75,7 @@
       path: /etc/dconf/profile/gdm
     register: gdm_rule 
     tags:
+      - level1
       - section01
       - section01.07
       - section01.07.02
@@ -83,6 +90,7 @@
       - { regexp: '^file-db:/usr/share/gdm/greeter-dconf-defaults' }
     when: gdm_rule.stat.exists == True 
     tags:
+      - level1
       - section01
       - section01.07
       - section01.07.02
@@ -98,6 +106,7 @@
       - { regexp: '^banner-message-text="Authorized uses only. All activity may be monitored and reported."^\' }
     when: gdm_rule.stat.exists == True 
     tags:
+      - level1
       - section01
       - section01.07
       - section01.07.02

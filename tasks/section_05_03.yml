@@ -5,6 +5,7 @@
       name: libpam-pwquality
       state: present
     tags:
+      - level1
       - section05
       - section05.03
       - section05.03.01
@@ -21,6 +22,7 @@
       - { name: 'ocredit' , value: '-1' }
       - { name: 'lcredit' , value: '-1' }
     tags:
+      - level1
       - section05
       - section05.03
       - section05.03.01
@@ -31,6 +33,7 @@
       regexp: 'pam_pwquality.so'
       line: 'password        requisite                       pam_pwquality.so try_first_pass retry=3'
     tags:
+      - level1
       - section05
       - section05.03
       - section05.03.01
@@ -41,6 +44,7 @@
       regexp: 'pam_tally2'
       line: 'auth required pam_tally2.so onerr=fail audit silent deny=5 unlock_time=900'
     tags:
+      - level1
       - section05
       - section05.03
       - section05.03.02
@@ -51,6 +55,7 @@
       regexp: '^password\s+sufficient\s+pam_unix.so'
       line: 'password sufficient pam_unix.so remember=5'
     tags:
+      - level1
       - section05
       - section05.03
       - section05.03.03
@@ -61,6 +66,7 @@
       regexp: '^password\s+\S+\s+pam_unix.so'
       line: 'password sufficient pam_unix.so sha512'
     tags:
+      - level1
       - section05
       - section05.03
       - section05.03.04

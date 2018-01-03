@@ -18,6 +18,7 @@
       - 'deb http://security.ubuntu.com/ubuntu xenial-security universe'
       - 'deb http://security.ubuntu.com/ubuntu xenial-security multiverse'
     tags:
+      - level1
       - section01
       - section01.02
       - section01.02.01
@@ -29,6 +30,7 @@
       state: present
       create: yes
     tags:
+      - level1
       - section01
       - section01.02
       - section01.02.02

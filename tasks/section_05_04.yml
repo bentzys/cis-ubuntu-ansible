@@ -5,6 +5,7 @@
     changed_when: False
     check_mode: no
     tags:
+      - level1
       - section05
       - section05.04
       - section05.04.01.01
@@ -16,6 +17,7 @@
       regexp: '^PASS_MAX_DAYS'
     when: pass_max_days.stdout|int > 90
     tags:
+      - level1
       - section05
       - section05.04
       - section05.04.01.01
@@ -25,6 +27,7 @@
     changed_when: False
     check_mode: no
     tags:
+      - level1
       - section05
       - section05.04
       - section05.04.01.02
@@ -36,6 +39,7 @@
       regexp: '^PASS_MIN_DAYS'
     when: pass_min_days.stdout|int < 7
     tags:
+      - level1
       - section05
       - section05.04
       - section05.04.01.02
@@ -45,6 +49,7 @@
     changed_when: False
     check_mode: no
     tags:
+      - level1
       - section05
       - section05.04
       - section05.04.01.03
@@ -56,6 +61,7 @@
       regexp: '^PASS_WARN_AGE'
     when: pass_warn_age.stdout|int < 7
     tags:
+      - level1
       - section05
       - section05.04
       - section05.04.01.03
@@ -66,6 +72,7 @@
     check_mode: no
     register: lock_inactive_rc
     tags:
+      - level1
       - section05
       - section05.04
       - section05.04.01.04
@@ -77,6 +84,7 @@
       state: present
     when: lock_inactive_rc.rc == 1
     tags:
+      - level1
       - section05
       - section05.04
       - section05.04.01.04
@@ -85,6 +93,7 @@
     register: system_acounts
     changed_when: False
     tags:
+      - level1
       - section05
       - section05.04
       - section05.04.02
@@ -96,6 +105,7 @@
       group: root
       mode: 0700
     tags:
+      - level1
       - section05
       - section05.04
       - section05.04.02
@@ -104,6 +114,7 @@
     shell: /opt/5.4.2.sh
     when: system_acounts.stdout != ""
     tags:
+      - level1
       - section05
       - section05.04
       - section05.04.02
@@ -116,6 +127,7 @@
       mode: 0700
       state: absent
     tags:
+      - level1
       - section05
       - section05.04
       - section05.04.02
@@ -125,6 +137,7 @@
     register: root_gid
     failed_when: False 
     tags:
+      - level1
       - section05
       - section05.04
       - section05.04.03
@@ -133,6 +146,7 @@
     command: usermod -g 0 root
     when: root_gid !=0
     tags:
+      - level1
       - section05
       - section05.04
       - section05.04.03
@@ -147,6 +161,14 @@
       - '/etc/bash.bashrc'
       - '/etc/profile'
     tags:
+      - level1
       - section05
       - section05.04
       - section05.04.04
+
+
+
+#  - name: 5.4.5 Ensure default user shell timeout is 900 seconds or less (Scored) ..
+#    tags:
+#      - level2
+

@@ -9,6 +9,7 @@
       state: file
     notify: restart ssh
     tags:
+      - level1
       - section05
       - section05.02
       - section05.02.01
@@ -20,6 +21,7 @@
       line: 'Protocol 2'
     notify: restart ssh
     tags:
+      - level1
       - section05
       - section05.02
       - section05.02.02
@@ -31,6 +33,7 @@
       line: 'LogLevel INFO'
     notify: restart ssh
     tags:
+      - level1
       - section05
       - section05.02
       - section05.02.03
@@ -42,6 +45,7 @@
       line: 'X11Forwarding no'
     notify: restart ssh
     tags:
+      - level1
       - section05
       - section05.02
       - section05.02.04
@@ -53,6 +57,7 @@
       line: 'MaxAuthTries 4'
     notify: restart ssh
     tags:
+      - level1
       - section05
       - section05.02
       - section05.02.05
@@ -64,6 +69,7 @@
       line: 'IgnoreRhosts yes'
     notify: restart ssh
     tags:
+      - level1
       - section05
       - section05.02
       - section05.02.06
@@ -75,6 +81,7 @@
       line: 'HostbasedAuthentication no'
     notify: restart ssh
     tags:
+      - level1
       - section05
       - section05.02
       - section05.02.07
@@ -86,6 +93,7 @@
       line: 'PermitRootLogin {{ permit_root_login }}'
     notify: restart ssh
     tags:
+      - level1
       - section05
       - section05.02
       - section05.02.08
@@ -97,6 +105,7 @@
       line: 'PermitEmptyPasswords no'
     notify: restart ssh
     tags:
+      - level1
       - section05
       - section05.02
       - section05.02.09
@@ -108,6 +117,7 @@
       line: 'PermitUserEnvironment no'
     notify: restart ssh
     tags:
+      - level1
       - section05
       - section05.02
       - section05.02.10
@@ -118,6 +128,7 @@
       line: 'MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com'
     notify: restart ssh
     tags:
+      - level1
       - section05
       - section05.02
       - section05.02.11
@@ -132,6 +143,7 @@
       - { name: 'ClientAliveCountMax' , value: '0' }
     notify: restart ssh
     tags:
+      - level1
       - section05
       - section05.02
       - section05.02.12
@@ -143,6 +155,7 @@
       line: 'LoginGraceTime 60'
     notify: restart ssh
     tags:
+      - level1
       - section05
       - section05.02
       - section05.02.13
@@ -159,6 +172,7 @@
       - { name: 'DenyGroups' , value: '{{ sshd_deny_groups }}' }
     notify: restart ssh
     tags:
+      - level1
       - section05
       - section05.02
       - section05.02.14
@@ -170,6 +184,7 @@
       line: 'Banner /etc/issue.net'
     notify: restart ssh
     tags:
+      - level1
       - section05
       - section05.02
       - section05.02.15

@@ -4,6 +4,7 @@
       name: rfkill
       state: present
     tags:
+      - level1
       - section03
       - section03.07
 
@@ -11,5 +12,6 @@
     command: rfkill block wifi
     when: disable_wifi == True
     tags:
+      - level1
       - section03
       - section03.07

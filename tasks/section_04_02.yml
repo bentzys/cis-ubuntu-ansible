@@ -5,6 +5,7 @@
       name: "{{ syslog_package }}"
       state: present
     tags:
+      - level1
       - section04
       - section04.02
       - section04.02.03
@@ -16,6 +17,7 @@
       enabled: yes
     when: syslog_package == "rsyslog"
     tags:
+      - level1
       - section04
       - section04.02
       - section04.02.01.01
@@ -44,6 +46,7 @@
     notify: restart rsyslog
     when: syslog_package == "rsyslog"
     tags:
+      - level1
       - section04
       - section04.02
       - section04.02.01.02
@@ -52,6 +55,7 @@
     register: rsyslog_files
     changed_when: False
     tags:
+      - level1
       - section04
       - section04.02
       - section04.02.01.03
@@ -65,6 +69,7 @@
     notify: restart rsyslog
     when: syslog_package == "rsyslog"
     tags:
+      - level1
       - section04
       - section04.02
       - section04.02.01.03
@@ -80,6 +85,7 @@
     notify: restart rsyslog
     when: filecreate_exists == 0 and syslog_package == "rsyslog"
     tags:
+      - level1
       - section04
       - section04.02
       - section04.02.01.03
@@ -90,6 +96,7 @@
     failed_when: False
     check_mode: no
     tags:
+      - level1
       - section04
       - section04.02
       - section04.02.01.04
@@ -103,6 +110,7 @@
     notify: restart rsyslog
     when: set_rsyslog_remote == True and remoteloghost.rc == 1 and syslog_package == "rsyslog"
     tags:
+      - level1
       - section04
       - section04.02
       - section04.02.01.04
@@ -112,6 +120,7 @@
     failed_when: False
     check_mode: no
     tags:
+      - level1
       - section04
       - section04.02
       - section04.02.01.05
@@ -128,6 +137,7 @@
     notify: restart rsyslog
     when: set_rsyslog_remote == True and moadloadpresent.rc == 1 and syslog_package == "rsyslog"
     tags:
+      - level1
       - section04
       - section04.02
       - section04.02.01.05
@@ -138,6 +148,7 @@
     failed_when: False
     check_mode: no
     tags:
+      - level1
       - section04
       - section04.02
       - section04.02.02.01
@@ -148,6 +159,7 @@
       enabled: yes
     when: syslognginstalled.rc == 0 and syslog_package == "syslog-ng"
     tags:
+      - level1
       - section04
       - section04.02
       - section04.02.02.01
@@ -179,6 +191,7 @@
     when: syslognginstalled.rc == 0 and syslog_package == "syslog-ng"
     notify: restart syslog-ng
     tags:
+      - level1
       - section04
       - section04.02
       - section04.02.02.02
@@ -191,6 +204,7 @@
     when: syslognginstalled.rc == 0 and syslog_package == "syslog-ng"
     notify: restart syslog-ng
     tags:
+      - level1
       - section04
       - section04.02
       - section04.02.02.03
@@ -203,6 +217,7 @@
     when: syslognginstalled.rc == 0 and syslog_package == "syslog-ng"
     notify: restart syslog-ng
     tags:
+      - level1
       - section04
       - section04.02
       - section04.02.02.04
@@ -219,6 +234,7 @@
     when: syslognginstalled.rc == 0 and syslog_package == "syslog-ng"
     notify: restart syslog-ng
     tags:
+      - level1
       - section04
       - section04.02
       - section04.02.02.05
@@ -226,6 +242,7 @@
   - name: 4.2.4 Ensure permissions on all logfiles are configured (Scored)
     shell: chmod -R g-wx,o-rwx /var/log/*
     tags:
+      - level1
       - section04
       - section04.02
       - section04.02.04

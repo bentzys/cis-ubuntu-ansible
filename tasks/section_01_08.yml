@@ -7,5 +7,6 @@
       upgrade: yes
     when: apt_upgrade == True
     tags:
+      - level1
       - section01
       - section01.08

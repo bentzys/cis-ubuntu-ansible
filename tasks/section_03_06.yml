@@ -9,6 +9,7 @@
       - iptables-persistent
     when: activate_iptables == True
     tags:
+      - level1
       - section03
       - section03.06
       - section03.06.01
@@ -18,6 +19,7 @@
     failed_when: False
     changed_when: False
     tags:
+      - level1
       - section03
       - section03.06
       - section03.06.02
@@ -35,6 +37,7 @@
     when: activate_iptables == True and firewall_policy_drop == True and drop_policy.rc == 1
     notify: restart iptables
     tags:
+      - level1
       - section03
       - section03.06
       - section03.06.02
@@ -52,6 +55,7 @@
     when: activate_iptables == True
     notify: restart iptables
     tags:
+      - level1
       - section03
       - section03.06
       - section03.06.03
@@ -74,6 +78,7 @@
     when: activate_iptables == True
     notify: restart iptables
     tags:
+      - level1
       - section03
       - section03.06
       - section03.06.04
@@ -83,6 +88,7 @@
     failed_when: False
     changed_when: False
     tags:
+      - level1
       - section03
       - section03.06
       - section03.06.05
@@ -91,6 +97,7 @@
     debug:
       msg: "Check firewall rules for the listening ports: {{listening_ports.stdout_lines}}"
     tags:
+      - level1
       - section03
       - section03.06
       - section03.06.05

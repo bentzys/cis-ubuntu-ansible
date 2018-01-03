@@ -5,6 +5,7 @@
       state: present
     when: enable_auditd == True
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.01.01
@@ -17,6 +18,7 @@
         create: yes
     when: enable_auditd == True
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.01.01
@@ -33,6 +35,7 @@
         - { name: 'admin_space_left_action' , value: 'halt' }
     when: enable_auditd == True
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.01.02
@@ -45,6 +48,7 @@
         create: yes
     when: enable_auditd == True
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.01.03
@@ -55,6 +59,7 @@
         enabled: yes
     when: enable_auditd == True
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.02
@@ -64,6 +69,7 @@
         dest: /etc/default/grub
         line: 'GRUB_CMDLINE_LINUX="audit=1"'
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.03
@@ -83,6 +89,7 @@
     when: enable_auditd == True
     notify: restart auditd
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.04
@@ -102,6 +109,7 @@
     when: enable_auditd == True
     notify: restart auditd
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.05
@@ -123,6 +131,7 @@
     when: enable_auditd == True
     notify: restart auditd
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.06
@@ -140,6 +149,7 @@
     when: enable_auditd == True
     notify: restart auditd
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.07
@@ -157,6 +167,7 @@
     when: enable_auditd == True
     notify: restart auditd
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.08
@@ -174,6 +185,7 @@
     when: enable_auditd == True
     notify: restart auditd
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.09
@@ -194,6 +206,7 @@
     when: enable_auditd == True
     notify: restart auditd
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.10
@@ -212,6 +225,7 @@
     when: enable_auditd == True
     notify: restart auditd
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.11
@@ -220,6 +234,7 @@
     register: setuid_setgid_commands
     changed_when: False
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.12
@@ -234,6 +249,7 @@
     when: enable_auditd == True
     notify: restart auditd    
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.12
@@ -250,6 +266,7 @@
     when: enable_auditd == True
     notify: restart auditd
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.13
@@ -266,6 +283,7 @@
     when: enable_auditd == True
     notify: restart auditd
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.14
@@ -282,6 +300,7 @@
     when: enable_auditd == True
     notify: restart auditd
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.15
@@ -295,6 +314,7 @@
     when: enable_auditd == True
     notify: restart auditd
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.16
@@ -313,6 +333,7 @@
     when: enable_auditd == True
     notify: restart auditd
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.17
@@ -326,6 +347,7 @@
       insertafter: EOF
     when: enable_auditd == True
     tags:
+      - level2
       - section04
       - section04.01
       - section04.01.18

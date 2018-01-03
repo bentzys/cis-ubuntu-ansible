@@ -5,6 +5,7 @@
       name: "{{ntp_package}}"
       state: present
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.01.01
@@ -22,6 +23,7 @@
     when: ntp_package  == "ntp"
     notify: restart ntp
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.01.02
@@ -37,6 +39,7 @@
     when: ntp_package  == "chrony"
     notify: restart chrony
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.01.03
@@ -48,6 +51,7 @@
       state: absent
     when: remove_xserver == True
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.02
@@ -58,6 +62,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.03
@@ -69,6 +74,7 @@
       enabled: no
     when: avahi_installed.rc == 0
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.03
@@ -79,6 +85,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.04
@@ -90,6 +97,7 @@
       enabled: no
     when: cups_installed.rc == 0
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.04
@@ -100,6 +108,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.05
@@ -110,6 +119,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.05
@@ -124,6 +134,7 @@
       - isc-dhcp-server6
     when: dhcp_installed.rc == 0 or dhcp6_installed.rc == 0
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.05
@@ -134,6 +145,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.06
@@ -145,6 +157,7 @@
       enabled: no
     when: ldap_installed.rc == 0
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.06
@@ -155,6 +168,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.07
@@ -165,6 +179,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.07
@@ -179,6 +194,7 @@
       - nfs-server
     when: rpcbind_installed.rc == 0 or nfs_installed.rc == 0
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.07
@@ -189,6 +205,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.08
@@ -200,6 +217,7 @@
       enabled: no
     when: bind9_installed.rc == 0
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.08
@@ -210,6 +228,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.09
@@ -221,6 +240,7 @@
       enabled: no
     when: vsftpd_installed.rc == 0
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.09
@@ -231,6 +251,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.10
@@ -242,6 +263,7 @@
       enabled: no
     when: apache2_installed.rc == 0
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.10
@@ -252,6 +274,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.11
@@ -262,6 +285,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.11
@@ -272,6 +296,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.11
@@ -287,6 +312,7 @@
       - cyrus-imap
     when: dovecot_installed.rc == 0 or exim_installed.rc == 0 or cyrus_imap_installed.rc == 0
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.11
@@ -297,6 +323,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.12
@@ -308,6 +335,7 @@
       enabled: no
     when: smbd_installed.rc == 0
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.12
@@ -318,6 +346,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.13
@@ -329,6 +358,7 @@
       enabled: no
     when: squid_installed.rc == 0
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.13
@@ -339,6 +369,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.14
@@ -350,6 +381,7 @@
       enabled: no
     when: snmpd_installed.rc == 0
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.14
@@ -358,6 +390,7 @@
       name: postfix
       state: present
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.15
@@ -371,6 +404,7 @@
       create: no
     notify: restart postfix
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.15
@@ -381,6 +415,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.16
@@ -392,6 +427,7 @@
       enabled: no
     when: rsync_installed.rc == 0
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.16
@@ -402,6 +438,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.17
@@ -413,6 +450,7 @@
       enabled: no
     when: nis_installed.rc == 0
     tags:
+      - level1
       - section02
       - section02.02
       - section02.02.17

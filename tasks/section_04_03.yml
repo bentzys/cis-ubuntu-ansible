@@ -6,5 +6,6 @@
     with_items:
       - '/etc/logrotate.conf'
     tags:
+      - level1
       - section04
       - section04.03

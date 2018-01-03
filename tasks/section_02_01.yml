@@ -7,6 +7,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.01
@@ -18,6 +19,7 @@
       line: 'disable           = yes'
     when: chargen_file.stat.exists
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.01
@@ -29,6 +31,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.02
@@ -40,6 +43,7 @@
       line: 'disable           = yes'
     when: daytime_file.stat.exists
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.02
@@ -51,6 +55,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.03
@@ -62,6 +67,7 @@
       line: 'disable           = yes'
     when: discard_file.stat.exists
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.03
@@ -73,6 +79,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.04
@@ -84,6 +91,7 @@
       line: 'disable           = yes'
     when: echo_file.stat.exists
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.04
@@ -95,6 +103,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.05
@@ -106,6 +115,7 @@
       line: 'disable           = yes'
     when: time_file.stat.exists
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.05
@@ -117,6 +127,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.06
@@ -128,6 +139,7 @@
       line: 'disable           = yes'
     when: rsh_file.stat.exists
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.06
@@ -139,6 +151,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.07
@@ -150,6 +163,7 @@
       line: 'disable           = yes'
     when: talk_file.stat.exists
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.07
@@ -161,6 +175,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.08
@@ -172,6 +187,7 @@
       line: 'disable           = yes'
     when: telnet_file.stat.exists
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.08
@@ -183,6 +199,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.09
@@ -194,6 +211,7 @@
       line: 'disable           = yes'
     when: tftp_file.stat.exists
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.09
@@ -204,6 +222,7 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.010
@@ -214,6 +233,7 @@
       state: stopped
     when: xinetd_installed.rc == 0
     tags:
+      - level1
       - section02
       - section02.01
       - section02.01.010

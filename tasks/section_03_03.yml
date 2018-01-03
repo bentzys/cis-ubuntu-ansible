@@ -6,6 +6,7 @@
       value: 0
       state: present
     tags:
+      - level1
       - section03
       - section03.03
       - section03.03.01
@@ -16,6 +17,7 @@
       value: 0
       state: present
     tags:
+      - level1
       - section03
       - section03.03
       - section03.03.02
@@ -31,6 +33,7 @@
       - net.ipv6.conf.lo.disable_ipv6
     when: disable_ipv6 == True
     tags:
+      - level1
       - section03
       - section03.03
       - section03.03.03

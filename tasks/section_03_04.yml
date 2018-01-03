@@ -5,6 +5,7 @@
       name: tcpd
       state: present
     tags:
+      - level1
       - section03
       - section03.04
       - section03.04.01
@@ -15,6 +16,7 @@
       line: 'ALL:ALL'
     when: enable_hosts_allow == True
     tags:
+      - level1
       - section03
       - section03.04
       - section03.04.02
@@ -25,6 +27,7 @@
       line: 'ALL:ALL'
     when: enable_hosts_deny == True
     tags:
+      - level1
       - section03
       - section03.04
       - section03.04.03
@@ -36,6 +39,7 @@
       group: root
       mode: 0644
     tags:
+      - level1
       - section03
       - section03.04
       - section03.04.05
@@ -47,6 +51,7 @@
       group: root
       mode: 0644
     tags:
+      - level1
       - section03
       - section03.04
       - section03.04.05
