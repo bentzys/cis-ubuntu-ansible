@@ -1,0 +1,15 @@
+---
+
+  - apt:
+      name: rfkill
+      state: present
+    tags:
+      - section03
+      - section03.07
+
+  - name: 3.7 Ensure wireless interfaces are disabled (Not Scored)
+    command: rfkill block wifi
+    when: disable_wifi == True
+    tags:
+      - section03
+      - section03.07
