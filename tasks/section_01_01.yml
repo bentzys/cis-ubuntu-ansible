@@ -113,7 +113,7 @@
       state: present
     when: tmp_partition.rc == 0
     tags:
-      - level1
+      - level2
       - section01
       - section01.01
       - section01.01.03
@@ -123,7 +123,7 @@
       name: fstab
     when: tmp_partition.rc == 0
     tags:
-      - level1
+      - level2
       - section01
       - section01.01
       - section01.01.03
@@ -134,7 +134,7 @@
       state: present
     when: tmp_partition.rc == 0
     tags:
-      - level1
+      - level2
       - section01
       - section01.01
       - section01.01.03
@@ -144,7 +144,7 @@
     failed_when: False
     ignore_errors: True
     tags:
-      - level1 
+      - level2 
       - section01 
       - section01.01
       - section01.01.03
@@ -293,7 +293,7 @@
       state: present
     when: var_tmp_partition.rc == 0
     tags:
-      - level1
+      - level2
       - section01
       - section01.01
       - section01.01.07
@@ -303,7 +303,7 @@
       name: fstab
     when: var_tmp_partition.rc == 0
     tags:
-      - level1
+      - level2
       - section01
       - section01.01
       - section01.01.07
@@ -314,7 +314,7 @@
       state: present
     when: var_tmp_partition.rc == 0
     tags:
-      - level1
+      - level2
       - section01
       - section01.01
       - section01.01.07
@@ -325,7 +325,7 @@
     ignore_errors: True
     changed_when: False
     tags:
-      - level1
+      - level2
       - section01
       - section01.01
       - section01.01.07
@@ -581,7 +581,7 @@
     changed_when: False
     ignore_errors: True
     tags:
-      - level1
+      - level2
       - section01
       - section01.01
       - section01.01.12
@@ -591,7 +591,7 @@
       state: present
     when: home_partition.rc == 0
     tags:
-      - level1
+      - level2
       - section01 
       - section01.01
       - section01.01.13
@@ -601,7 +601,7 @@
       name: fstab
     when: home_partition.rc == 0
     tags:
-      - level1
+      - level2
       - section01
       - section01.01
       - section01.01.13
@@ -612,7 +612,7 @@
       state: present
     when: home_partition.rc == 0
     tags:
-      - level1
+      - level2
       - section01
       - section01.01
       - section01.01.13
@@ -623,7 +623,7 @@
     ignore_errors: True
     changed_when: False
     tags:
-      - level1
+      - level2
       - section01
       - section01.01
       - section01.01.13
