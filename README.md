@@ -11,5 +11,5 @@ and Uber's mountopts https://github.com/Uberspace/ansible-mountopts
 
 The following will automatically install Ansible, download and run the playbook on your local system.
 ```
-$ \curl -sSL http://git.io/vZw8S > /tmp/cis.sh && bash /tmp/cis.sh
+$ \curl -sSL http://git.io/vbj3Y > /tmp/cis.sh && bash /tmp/cis.sh
 ```
