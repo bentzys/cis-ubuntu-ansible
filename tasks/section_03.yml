@@ -1,36 +1,36 @@
 ---
 
-  - include: section_03_level1.yml
+  - include: section_03_01.yml
     tags:
       - section03
-      - level1
+      - section03.01
 
-  - include: section_03_level2.yml
+  - include: section_03_02.yml
     tags:
       - section03
-      - level2
+      - section03.02
 
-  - include: section_03_level3.yml
+  - include: section_03_03.yml
     tags:
       - section03
-      - level3
+      - section03.03
 
-  - include: section_03_level4.yml
+  - include: section_03_04.yml
     tags:
       - section03
-      - level4
+      - section03.04
 
-  - include: section_03_level5.yml
+  - include: section_03_05.yml
     tags:
       - section03
-      - level5
+      - section03.05
 
-  - include: section_03_level6.yml
+  - include: section_03_06.yml
     tags:
       - section03
-      - level6
+      - section03.06
 
-  - include: section_03_level7.yml
+  - include: section_03_07.yml
     tags:
       - section03
-      - level7
+      - section03.07
