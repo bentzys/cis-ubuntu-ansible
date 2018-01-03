@@ -22,7 +22,7 @@ install_playbook () {
 mkdir -p ansible/roles-ubuntu/roles
 cd ansible/roles-ubuntu
 if [ ! -e "roles/cis" ]; then
-  git clone https://github.com/awailly/cis-ubuntu-ansible.git roles/cis
+  git clone https://github.com/bentzys/cis-ubuntu-ansible.git roles/cis
 fi
 
 if [ ! -e "playbook.yml" ]; then
