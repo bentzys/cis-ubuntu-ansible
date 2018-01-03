@@ -1,6 +1,9 @@
 ---
 
-  - name: Check if OS is Ubuntu 16.04 xenial (we do not support others)
-    debug: msg="Check OS"
-    failed_when: ansible_distribution != "Ubuntu" and ansible_distribution_version !="16.04"
+- name: Check if OS is Ubuntu 14.04 Trusty or 16.04 Xenial (we do not support others)
+  debug: msg="Check valid OS"
+  failed_when:
+    - ansible_distribution != "Ubuntu"
+    - ansible_distribution_version !="14.04"
+    - ansible_distribution_version !="16.04"
 
