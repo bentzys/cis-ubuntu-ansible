@@ -150,9 +150,17 @@
       - section01.01.03
 
   - name: 1.1.3 Ensure nodev option set on /tmp partition (Scored)
-    command: mount -o remount,nodev /tmp
+    shell: register df | grep -q /tmp
+    register: tmp_partition_exists
+    tags:
+      - level1
+      - section01
+      - section01.01
+      - section01.01.03
+
+  - command: mount -o remount,nodev /tmp
     ignore_errors: True
-    when: tmp_partition.rc == 0 and mount_tmp_output.rc != 0
+    when: tmp_partition_exists != '' and tmp_partition.rc == 0 and mount_tmp_output.rc != 0
     tags:
       - level1
       - section01
@@ -162,7 +170,7 @@
   - apt:
       name: python-pip
       state: present
-    when: tmp_partition.rc == 0
+    when: tmp_partition_exists != '' and tmp_partition.rc == 0
     tags:
       - level1
       - section01
@@ -172,7 +180,7 @@
   - name: install dependencies for mountopts-module
     pip:
       name: fstab
-    when: tmp_partition.rc == 0
+    when: tmp_partition_exists != '' and tmp_partition.rc == 0
     tags:
       - level1
       - section01
@@ -183,7 +191,7 @@
       name: /tmp
       option: nosuid
       state: present
-    when: tmp_partition.rc == 0
+    when: tmp_partition_exists != '' and tmp_partition.rc == 0
     tags:
       - level1
       - section01
@@ -195,6 +203,7 @@
     failed_when: false
     ignore_errors: True
     changed_when: False
+    when: tmp_partition_exists != ''
     tags:
       - level1
       - section01
@@ -204,7 +213,7 @@
   - name: 1.1.4 Ensure nosuid option set on /tmp partition (Scored)
     command: mount -o remount,nosuid /tmp
     ignore_errors: True
-    when: tmp_partition.rc == 0 and mount_tmp_output.rc != 0
+    when: tmp_partition_exists != '' and tmp_partition.rc == 0 and mount_tmp_output.rc != 0
     tags:
       - level1
       - section01
@@ -333,7 +342,7 @@
   - name: 1.1.7 Ensure nodev option set on /var/tmp partition (Scored)
     command: mount -o remount,nodev /var/tmp
     ignore_errors: True
-    when: var_tmp_partition.rc == 0 and mount_var_tmp_output.rc != 0
+    when: var_tmp_partition_exists != '' and var_tmp_partition.rc == 0 and mount_var_tmp_output.rc != 0
     tags:
       - level1
       - section01
@@ -343,7 +352,7 @@
   - apt:
       name: python-pip
       state: present
-    when: var_tmp_partition.rc == 0
+    when: var_tmp_partition_exists != '' and var_tmp_partition.rc == 0
     tags:
       - level1
       - section01 
@@ -353,7 +362,7 @@
   - name: install dependencies for mountopts-module
     pip:
       name: fstab
-    when: var_tmp_partition.rc == 0
+    when: var_tmp_partition_exists != '' and var_tmp_partition.rc == 0
     tags:
       - level1
       - section01
@@ -364,7 +373,7 @@
       name: /var/tmp
       option: nosuid
       state: present
-    when: var_tmp_partition.rc == 0
+    when: var_tmp_partition_exists != '' and var_tmp_partition.rc == 0
     tags:
       - level1
       - section01
@@ -376,6 +385,7 @@
     failed_when: false
     ignore_errors: True
     changed_when: False
+    when: var_tmp_partition_exists != ''
     tags:
       - level1
       - section01
