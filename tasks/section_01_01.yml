@@ -74,6 +74,8 @@
 
   - name: 1.1.1.7 Ensure mounting of udf filesystems is disabled (Scored)
     lineinfile:
+                     - name: 1.1.1.7 Ensure mounting of udf filesystems is disabled (Scored)
+    lineinfile:
       dest: /etc/modprobe.d/CIS.conf
       line: 'install udf /bin/true'
       state: present
@@ -144,23 +146,36 @@
     failed_when: False
     ignore_errors: True
     tags:
-      - level2 
-      - section01 
+      - level2
+      - section01
       - section01.01
       - section01.01.03
 
   - name: 1.1.3 Ensure nodev option set on /tmp partition (Scored)
-    shell: register df | grep -q /tmp
+    shell: df | grep -q /tmp
     register: tmp_partition_exists
+    ignore_errors: True
     tags:
       - level1
       - section01
       - section01.01
       - section01.01.03
 
+  - command: grep '\s/tmp\s' /etc/fstab
+    register: tmp_partition
+    ignore_errors: True
+    when: tmp_partition_exists.rc == 0
+    tags:
+      - level1
+      - section01
+      - section01.01
+      - section01.01.03
+
+
+
   - command: mount -o remount,nodev /tmp
     ignore_errors: True
-    when: tmp_partition_exists != '' and tmp_partition.rc == 0 and mount_tmp_output.rc != 0
+    when: tmp_partition_exists.rc == 0 and tmp_partition.rc == 0 and mount_tmp_output.rc != 0
     tags:
       - level1
       - section01
@@ -170,7 +185,7 @@
   - apt:
       name: python-pip
       state: present
-    when: tmp_partition_exists != '' and tmp_partition.rc == 0
+    when: tmp_partition_exists.rc == 0 and tmp_partition.rc == 0
     tags:
       - level1
       - section01
@@ -180,7 +195,7 @@
   - name: install dependencies for mountopts-module
     pip:
       name: fstab
-    when: tmp_partition_exists != '' and tmp_partition.rc == 0
+    when: tmp_partition_exists.rc == 0 and tmp_partition.rc == 0
     tags:
       - level1
       - section01
@@ -191,7 +206,7 @@
       name: /tmp
       option: nosuid
       state: present
-    when: tmp_partition_exists != '' and tmp_partition.rc == 0
+    when: tmp_partition_exists.rc == 0 and tmp_partition.rc == 0
     tags:
       - level1
       - section01
@@ -213,7 +228,7 @@
   - name: 1.1.4 Ensure nosuid option set on /tmp partition (Scored)
     command: mount -o remount,nosuid /tmp
     ignore_errors: True
-    when: tmp_partition_exists != '' and tmp_partition.rc == 0 and mount_tmp_output.rc != 0
+    when: tmp_partition_exists.rc == 0 and tmp_partition.rc == 0 and mount_tmp_output.rc != 0
     tags:
       - level1
       - section01
@@ -340,9 +355,18 @@
       - section01.01.07
 
   - name: 1.1.7 Ensure nodev option set on /var/tmp partition (Scored)
-    command: mount -o remount,nodev /var/tmp
+    shell: df | grep -q /var/tmp
+    register: var_tmp_partition_exists
     ignore_errors: True
-    when: var_tmp_partition_exists != '' and var_tmp_partition.rc == 0 and mount_var_tmp_output.rc != 0
+    tags:
+      - level1
+      - section01
+      - section01.01
+      - section01.01.07
+
+  - command: mount -o remount,nodev /var/tmp
+    ignore_errors: True
+    when: var_tmp_partition_exists.rc == 0 and var_tmp_partition.rc == 0 and mount_var_tmp_output.rc != 0
     tags:
       - level1
       - section01
@@ -352,17 +376,17 @@
   - apt:
       name: python-pip
       state: present
-    when: var_tmp_partition_exists != '' and var_tmp_partition.rc == 0
+    when: var_tmp_partition_exists.rc == 0 and var_tmp_partition.rc == 0
     tags:
       - level1
-      - section01 
+      - section01
       - section01.01
       - section01.01.08
 
   - name: install dependencies for mountopts-module
     pip:
       name: fstab
-    when: var_tmp_partition_exists != '' and var_tmp_partition.rc == 0
+    when: var_tmp_partition_exists.rc == 0 and var_tmp_partition.rc == 0
     tags:
       - level1
       - section01
@@ -373,7 +397,7 @@
       name: /var/tmp
       option: nosuid
       state: present
-    when: var_tmp_partition_exists != '' and var_tmp_partition.rc == 0
+    when: var_tmp_partition_exists.rc == 0 and var_tmp_partition.rc == 0
     tags:
       - level1
       - section01
@@ -385,7 +409,7 @@
     failed_when: false
     ignore_errors: True
     changed_when: False
-    when: var_tmp_partition_exists != ''
+    when: var_tmp_partition_exists.rc == 0
     tags:
       - level1
       - section01
@@ -395,7 +419,7 @@
   - name: 1.1.8 Ensure nosuid option set on /var/tmp partition (Scored)
     command: mount -o remount,nosuid /var/tmp
     ignore_errors: True
-    when: var_tmp_partition.rc == 0 and mount_var_tmp_output.rc != 0
+    when: var_tmp_partition_exists.rc == 0 and var_tmp_partition.rc == 0 and mount_var_tmp_output.rc != 0
     tags:
       - level1
       - section01
@@ -405,17 +429,17 @@
   - apt:
       name: python-pip
       state: present
-    when: var_tmp_partition.rc == 0
+    when: var_tmp_partition_exists.rc == 0 and var_tmp_partition.rc == 0
     tags:
       - level1
-      - section01 
+      - section01
       - section01.01
       - section01.01.09
 
   - name: install dependencies for mountopts-module
     pip:
       name: fstab
-    when: var_tmp_partition.rc == 0
+    when: var_tmp_partition_exists.rc == 0 and var_tmp_partition.rc == 0
     tags:
       - level1
       - section01
@@ -426,7 +450,7 @@
       name: /var/tmp
       option: noexec
       state: present
-    when: var_tmp_partition.rc == 0
+    when: var_tmp_partition_exists.rc == 0 and var_tmp_partition.rc == 0
     tags:
       - level1
       - section01
@@ -438,6 +462,7 @@
     failed_when: false
     ignore_errors: True
     changed_when: False
+    when: var_tmp_partition_exists.rc == 0
     tags:
       - level1
       - section01
@@ -447,7 +472,7 @@
   - name: 1.1.9 Ensure noexec option set on /var/tmp partition (Scored)
     command: mount -o remount,noexec /var/tmp
     ignore_errors: True
-    when: var_tmp_partition.rc == 0 and mount_var_tmp_output.rc != 0
+    when: var_tmp_partition_exists.rc == 0 and var_tmp_partition.rc == 0 and mount_var_tmp_output.rc != 0
     tags:
       - level1
       - section01
@@ -455,7 +480,16 @@
       - section01.01.09
 
   - name: 1.1.10 Ensure separate partition exists for /var/log (Scored)
-    command: grep '\s/var/log\s' /etc/fstab
+    shell: df | grep -q /var/log
+    register: var_log_partition_exists
+    ignore_errors: True
+    tags:
+      - level2
+      - section01
+      - section01.01
+      - section01.01.10
+
+  - command: grep '\s/var/log\s' /etc/fstab
     register: var_log_partition
     failed_when: var_log_partition.rc == 1
     changed_when: False
@@ -602,7 +636,7 @@
     when: home_partition.rc == 0
     tags:
       - level2
-      - section01 
+      - section01
       - section01.01
       - section01.01.13
 
@@ -781,3 +815,4 @@
       - section01
       - section01.01
       - section01.01.21
+
