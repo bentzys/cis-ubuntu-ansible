@@ -2,6 +2,15 @@
 
 set -o errexit
 
+cislevel=$1
+
+if [ "$cislevel" != "level1" ]
+then
+   echo "Only CIS Level1 is currently supported. Exiting."
+else
+   export args='--skip-tags level2'
+fi
+
 install_dependencies () {
 
 sudo apt-get update
@@ -41,7 +50,7 @@ fi
 }
 
 run_playbook () {
-ansible-playbook -b -u $USER $local_co -i "$IP," playbook.yml --become
+ansible-playbook -b -u $USER $local_co -i "$IP," playbook.yml $args
 }
 
 cd /tmp
