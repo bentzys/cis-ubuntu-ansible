@@ -15,13 +15,13 @@ and Uber's mountopts https://github.com/Uberspace/ansible-mountopts
 
 The following will automatically install Ansible, download and run the playbook on your local system, according to your needs:
 
-For CIS Level 1 complience:
+For CIS Level 1 compliance:
 
 ```
 $ \curl -sSL http://git.io/vbj3Y > /tmp/cis.sh && bash /tmp/cis.sh level1
 ```
 
-For CIS Level 2 complience:
+For CIS Level 2 compliance:
 
 ```
 $ \curl -sSL http://git.io/vbj3Y > /tmp/cis.sh && bash /tmp/cis.sh level2
