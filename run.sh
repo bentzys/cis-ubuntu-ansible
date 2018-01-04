@@ -2,16 +2,31 @@
 
 set -o errexit
 
-cislevel=$1
-tags_to_skip='notags'
+args=''
 
+#check distribution
+distribution=$(lsb_release -sc)
+
+if [ "$distribution" = "trusty" ] || [ "$distribution" = "xenial" ]
+then
+   args+="--skip-tags not-for-$distribution"
+else
+   echo "Only trusty & xenial are currently supported. Exiting."
+   exit -1
+fi
+
+##get level
+cislevel=$1
 if [ "$cislevel" != "level1" ]
 then
    echo "Only CIS Level1 is currently supported. Exiting."
    exit -1
 else
-   export tags_to_skip='level2'
+   args+=" --skip-tags level2"
 fi
+
+#TODO: worstation/server - 2.2.4 && 3.7
+
 
 install_dependencies () {
 
@@ -52,7 +67,7 @@ fi
 }
 
 run_playbook () {
-ansible-playbook -b -u $USER $local_co -i "$IP," playbook.yml --skip-tags $tags_to_skip
+ansible-playbook -b -u $USER $local_co -i "$IP," playbook.yml $args
 }
 
 cd /tmp
