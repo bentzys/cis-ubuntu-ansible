@@ -3,7 +3,7 @@
 set -o errexit
 
 cislevel=$1
-tags_to_skip='nothing'
+tags_to_skip='notags'
 
 if [ "$cislevel" != "level1" ]
 then
