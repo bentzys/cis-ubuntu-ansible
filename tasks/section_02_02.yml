@@ -56,58 +56,115 @@
       - section02.02
       - section02.02.02
 
-  - command: dpkg-query -s avahi-daemon
+  - name: 2.2.3 Ensure Avahi Server is not enabled (Scored)
+    command: dpkg-query -s avahi-daemon
     register: avahi_installed
     failed_when: False
     ignore_errors: True
     changed_when: False
     tags:
+      - not-for-trusty
       - level1
       - section02
       - section02.02
       - section02.02.03
 
-  - name: 2.2.3 Ensure Avahi Server is not enabled (Scored)
-    service:
+  - service:
       name: avahi-daemon
       state: stopped
       enabled: no
     when: avahi_installed.rc == 0
     tags:
+      - not-for-trusty
       - level1
       - section02
       - section02.02
       - section02.02.03
 
-  - command: dpkg-query -s cups-server-common
+
+  - name: 2.2.3 Ensure Avahi Server is not enabled (check) (Scored)
+    stat: path='/etc/init/avahi-daemon.conf'
+    register: avahi_stat
+    tags:
+      - not-for-xenial
+      - level1
+      - section02
+      - section02.02
+      - section02.02.03
+
+  - lineinfile: >
+        line='#start on (filesystem'
+        state=present
+        regexp='start on \(filesystem'
+        dest=/etc/init/avahi-daemon.conf
+    when: avahi_stat.stat.exists == True
+    tags:
+      - not-for-xenial
+      - level1
+      - section02
+      - section02.02
+      - section02.02.03
+
+  - name: 2.2.4 Ensure CUPS is not enabled (Scored)
+    command: dpkg-query -s cups-server-common
     register: cups_installed
     failed_when: False
     ignore_errors: True
     changed_when: False
     tags:
+      - not-for-trusty
       - level1
       - section02
       - section02.02
       - section02.02.04
 
-  - name: 2.2.4 Ensure CUPS is not enabled (Scored)
-    service:
+  - service:
       name: cups
       state: stopped
       enabled: no
     when: cups_installed.rc == 0
     tags:
+      - not-for-trusty
       - level1
       - section02
       - section02.02
       - section02.02.04
 
-  - command: dpkg-query -s isc-dhcp-server
+
+
+  - name: 2.2.4 Ensure CUPS is not enabled (Scored)
+    stat: path='/etc/init/cups.conf'
+    register: cups_stat
+    tags:
+      - not-for-xenial
+      - level1
+      - section02
+      - section02.02
+      - section02.02.04
+
+  - lineinfile: >
+        line='#start on (filesystem'
+        state=present
+        regexp='start on \(filesystem'
+        dest=/etc/init/cups.conf
+    when: cups_stat.stat.exists == True
+    tags:
+      - not-for-xenial
+      - level1
+      - section02
+      - section02.02
+      - section02.02.04
+
+
+
+  - name: 2.2.5 Ensure DHCP Server is not enabled (Scored)
+    command: dpkg-query -s isc-dhcp-server
     register: dhcp_installed
     failed_when: False 
     ignore_errors: True
     changed_when: False
     tags:
+      - not-for-trusty
       - level1
       - section02
       - section02.02
@@ -119,13 +176,13 @@
     ignore_errors: True
     changed_when: False
     tags:
+      - not-for-trusty
       - level1
       - section02
       - section02.02
       - section02.02.05
 
-  - name: 2.2.5 Ensure DHCP Server is not enabled (Scored)
-    service:
+  - service:
       name: "{{ item }}"
       state: stopped
       enabled: no
@@ -134,33 +191,95 @@
       - isc-dhcp-server6
     when: dhcp_installed.rc == 0 or dhcp6_installed.rc == 0
     tags:
+      - not-for-trusty
       - level1
       - section02
       - section02.02
       - section02.02.05
 
-  - command: dpkg-query -s slapd
+  - name: 2.2.5 Ensure DHCP Server is not enabled (Scored)
+    stat: path='/etc/init/isc-dhcp-server.conf'
+    register: dhcp_stat
+    tags:
+      - not-for-xenial
+      - level1
+      - section02
+      - section02.02
+      - section02.02.05
+
+  - lineinfile: >
+        line='#start on runlevel [2345]'
+        state=present
+        regexp='start on runlevel'
+        dest=/etc/init/isc-dhcp-server.conf
+    when: dhcp_stat.stat.exists == True
+    tags:
+      - not-for-xenial
+      - level1
+      - section02
+      - section02.02
+      - section02.02.05
+
+  - stat: path='/etc/init/isc-dhcp-server6.conf'
+    register: dhcp6_stat
+    tags:
+      - not-for-xenial
+      - level1
+      - section02
+      - section02.02
+      - section02.02.05
+
+  - lineinfile: >
+        line='#start on runlevel [2345]'
+        state=present
+        regexp='start on runlevel'
+        dest=/etc/init/isc-dhcp-server6.conf
+    when: dhcp6_stat.stat.exists == True
+    tags:
+      - not-for-xenial
+      - level1
+      - section02
+      - section02.02
+      - section02.02.05
+
+  - name: 2.2.6 Ensure LDAP server is not enabled (Scored)
+    command: dpkg-query -s slapd
     register: ldap_installed
     failed_when: False
     ignore_errors: True
     changed_when: False
     tags:
+      - not-for-trusty
+      - level1
+      - section02
+      - section02.02
+      - section02.02.06
+
+  - service:
+      name: slapd
+      state: stopped
+      enabled: no
+    when: ldap_installed.rc == 0
+    tags:
+      - not-for-trusty
       - level1
       - section02
       - section02.02
       - section02.02.06
 
   - name: 2.2.6 Ensure LDAP server is not enabled (Scored)
-    service:
-      name: slapd
-      state: stopped
-      enabled: no
-    when: ldap_installed.rc == 0
+    apt: name=slapd purge=yes state=absent
     tags:
+      - not-for-xenial
       - level1
       - section02
       - section02.02
       - section02.02.06
+
+
+
+
+
 
   - command: dpkg-query -s nfs-kernel-server
     register: nfs_installed
