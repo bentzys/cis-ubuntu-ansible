@@ -225,7 +225,7 @@
       - level1
       - section02
       - section02.01
-      - section02.01.010
+      - section02.01.10
 
   - name: 2.1.10 Ensure xinetd is not enabled (Scored)
     systemd:
@@ -233,7 +233,31 @@
       state: stopped
     when: xinetd_installed.rc == 0
     tags:
+      - not-for-trusty 
       - level1
       - section02
       - section02.01
-      - section02.01.010
+      - section02.01.10
+
+  - name: 2.1.10 Ensure xinetd is not enabled (Scored)
+    stat: path=/etc/init/xinetd.conf
+    register: xinetd_path
+    tags:
+      - not-for-xenial
+      - level1
+      - section02
+      - section02.01
+      - section02.01.10
+
+  - lineinfile: >
+        dest=/etc/init/xinetd.conf
+        regexp='start on runlevel'
+        state=present
+        line='#start on runlevel [2345]'
+    when: xinetd_path.stat.exists == True
+    tags:
+      - not-for-xenial
+      - level1
+      - section02
+      - section02.01
+      - section02.01.10
