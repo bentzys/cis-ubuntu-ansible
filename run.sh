@@ -3,12 +3,14 @@
 set -o errexit
 
 cislevel=$1
+tags_to_skip='nothing'
 
 if [ "$cislevel" != "level1" ]
 then
    echo "Only CIS Level1 is currently supported. Exiting."
+   exit -1
 else
-   export args='--skip-tags level2'
+   export tags_to_skip='level2'
 fi
 
 install_dependencies () {
@@ -50,7 +52,7 @@ fi
 }
 
 run_playbook () {
-ansible-playbook -b -u $USER $local_co -i "$IP," playbook.yml $args
+ansible-playbook -b -u $USER $local_co -i "$IP," playbook.yml --skip-tags $tags_to_skip
 }
 
 cd /tmp
