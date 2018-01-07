@@ -2,7 +2,7 @@
 # STILL AT DEVELOPMENT!!
 
 
-Based on https://github.com/awailly/cis-ubuntu-ansible
+Based on https://github.com/veritone/cis-ubuntu-ansible
 and Uber's mountopts https://github.com/Uberspace/ansible-mountopts
 
 ## Supported CIS Benchmarks:
