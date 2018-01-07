@@ -71,13 +71,16 @@ run_playbook () {
 ansible-playbook -b -u $USER $local_co -i "$IP," playbook.yml --skip-tags $args
 }
 
+purge () {
+pip freeze | xargs sudo -H pip uninstall -y
+sudo apt-get -y purge python-pip git python-dev
+sudo apt-get -y  autoremove
+rm -rf /tmp/*
+}
+
+
 cd /tmp
 install_dependencies
 install_playbook
 run_playbook | tee /tmp/cis.log
-
-
-#yes | sudo -H pip remove ansible markupsafe
-#sudo apt-get remove -y python-pip git python-dev
-#sudo apt-get -y autoremove
-
+#purge
